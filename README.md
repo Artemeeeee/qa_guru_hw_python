@@ -1,1 +1,1 @@
-# qa_guru_hw_python
+# qa_guru_homework
