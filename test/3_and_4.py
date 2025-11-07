@@ -8,7 +8,7 @@ from selenium import webdriver
 
 @pytest.fixture
 def driver():
-    opts = Options()
+    opts = options()
 
     opts.add_argument("--headless=new")
     opts.add_argument("--window-size=1280,900")
@@ -34,5 +34,7 @@ def test_github_greeting_page():
     url = "https://github.com/"
     driver.get(url)
 
-    assert driver.title != "GitLab"
+    assert "GitHub" in driver.title
     assert driver.current_url == url
+
+
