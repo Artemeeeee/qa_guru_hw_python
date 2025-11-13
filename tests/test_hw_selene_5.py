@@ -49,7 +49,7 @@ def test_form_fill():
         '28 January,2003',
         'Maths',
         'Sports',
-        '',  # Picture - пустое
+        'photo.jpg',
         'Улица колотушкина 10',
         'NCR Delhi'
     ))
