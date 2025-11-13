@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 from selene import browser, by, have, command
 
 
@@ -24,7 +27,9 @@ def test_form_fill():
     browser.element('#react-select-4-input').type('d').press_enter()
 
 
-
+    #фото
+    test_image_path = str(Path(__file__).parent.parent.joinpath('test_files', 'photo.jpg').resolve())
+    browser.element('#uploadPicture').set_value(test_image_path)
 
 
     #блок даты рождения
