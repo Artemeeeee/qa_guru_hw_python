@@ -131,5 +131,3 @@ def extract_login_domain(address: str) -> tuple[str, str]:
     return login, domain
 # parted = extract_login_domain(email["from"])
 # print(parted)
-
-
