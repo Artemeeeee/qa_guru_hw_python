@@ -20,7 +20,7 @@ def normalize_addresses(email: dict) -> dict:
     return normalized_email
 
 normalized_email = normalize_addresses(email)
-#print(normalized_email)
+
 
 #2. Сокращенная версия тела письма
 def add_short_body(email: dict) -> dict:
@@ -28,7 +28,7 @@ def add_short_body(email: dict) -> dict:
     short_email["short_body"] = short_email["body"][:10] + "..."
     return short_email
 email_short = add_short_body(email)
-#print(email_short)
+
 
 #3. Очистка текста письма
 def clean_body_text(body: str) -> str:
@@ -38,22 +38,21 @@ def clean_body_text(body: str) -> str:
 email["clean_body"] = clean_body_text(email["body"])
 #print(clean_body_text(body=email["body"]))
 
-#4. Формирование итогового текста письма
+
 
 def build_sent_text(email: dict) -> str:
     beauty_email = f"Кому: {email['to']}, от: {email['from']} Тема: {email['subject']}, дата: {email['date']} {email['clean_body']}"
     return beauty_email
 email["beauty body"] = build_sent_text(email)
-#print(email["beauty body"])
+
 
 #5. Проверка пустоты темы и тела
 def check_empty_fields(subject: str, body: str) -> tuple[bool, bool]:
     is_subject_empty = not email["subject"].strip()
-    is_body_empty = not email["clean_body"].strip()
+    is_body_empty = not email["body"].strip()
     return is_subject_empty, is_body_empty
-is_subject_empty, is_body_empty = check_empty_fields(email["subject"], email["body"])
-#print("Пустая тема письма:", is_subject_empty)
-#print("Пустое тело письма:", is_body_empty)
+
+
 
 #6. Маска email отправителя
 
@@ -63,8 +62,7 @@ def mask_sender_email(email: dict) -> dict:
     email_copy["from"] = login[:2] + "***@" + domain.strip()
     return email_copy
 
-#masked = mask_sender_email(email)
-#print(masked["from"])
+
 
 #7. Проверка корректности email
 def get_correct_email(email_list: list[str]) -> list[str]:
@@ -98,8 +96,7 @@ test_emails = [
     "",
     "   ",
     ]
-#correct_list = get_correct_email(test_emails)
-#print( correct_list)
+
 
 
 #8. Создание словаря письма
@@ -112,8 +109,7 @@ def create_email(sender: str, recipient: str, subject: str, body: str) -> dict:
     }
     return auto_email
 
-#test_auto_email = create_email(sender="tema", recipient="ktoto", subject="Test Email", body="Test trst test")
-#print(test_auto_email)
+
 
 
 #9. Добавление даты отправки
@@ -122,12 +118,9 @@ def add_send_date(email: dict) -> dict:
     email["send_date"] = send_date
     return email
 
-#email_with_date = add_send_date({'test_email': ''})
-#print(email_with_date)
+
 
 #10Получение логина и домена - разделяет email на логин и домен
 def extract_login_domain(address: str) -> tuple[str, str]:
     login, domain = address.split('@')
     return login, domain
-# parted = extract_login_domain(email["from"])
-# print(parted)
