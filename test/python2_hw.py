@@ -53,7 +53,6 @@ def check_empty_fields(subject: str, body: str) -> tuple[bool, bool]:
     return is_subject_empty, is_body_empty
 
 
-
 #6. Маска email отправителя
 
 def mask_sender_email(email: dict) -> dict:
